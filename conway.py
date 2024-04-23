@@ -11,7 +11,7 @@ class Conway():
         self.DEAD: bool = False  # state of a dead cell
 
         self.ALIVE_CELL: str = 'X'  # representation of an alive cell
-        self.DEAD_CELL: str = '.'  # representation of a dead cell
+        self.DEAD_CELL: str = '_'  # representation of a dead cell
 
         self.has_alive_cell: bool = False  # whether the grid has a cell alive or not
         self.has_changed: bool = True  # whether the grid has evoluate or not
@@ -26,9 +26,9 @@ class Conway():
         for row in self.grid:
             for cell in row:
                 if cell:
-                    res += f"{self.ALIVE_CELL:>3}"
+                    res += f"{self.ALIVE_CELL:<6}"
                 else:
-                    res += f"{self.DEAD_CELL:>3}"
+                    res += f"{self.DEAD_CELL:<6}"
             res += "\n"
         return res
 
@@ -49,7 +49,7 @@ class Conway():
             if cell_col != 0:
                 count = count+1 if self.grid[cell_row-1][cell_col-1] != self.DEAD else count
             #check upright
-            if cell_col != self.ROWS-1:
+            if cell_col != self.COLUMNS-1:
                 count = count+1 if self.grid[cell_row-1][cell_col+1] != self.DEAD else count
 
         # check down
